@@ -16,7 +16,7 @@ let md = 5;
 
 const Dollar = () => {
   return (
-    <div className="d-flex flex-wrap gap-1 mb-5">
+    <div className="d-flex flex-wrap gap-1 mb-5 text-light">
       <Col xs={xs} sm={sm} md={md} className={BSCol} style={ColStyle}>
         <div>
           <h4>CDM</h4>

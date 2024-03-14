@@ -16,7 +16,7 @@ const Profile = () => {
         <p className="m-0 p-1">Connect Wallet</p>
         <p className="m-0 p-1">N</p>
       </div>
-      <div className="d-flex text-light flex-column align-items-center rounded-4 mx-auto p-3 gap-3 border bg-dar">
+      <div className="d-flex text-light flex-column align-items-center rounded-4 mx-auto p-3 gap-3 border border-secondary bg-dar">
         <div className="d-flex flex-column align-items-center">
           <p className="p-0 m-0 fs-6">Earned CDM</p>
           <h3>$CDM 0.00</h3>

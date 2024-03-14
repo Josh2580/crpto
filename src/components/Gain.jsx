@@ -44,7 +44,7 @@ const Gain = () => {
 
   let BSCol = " p-0 h-100 ";
 
-  let BSCard = "border";
+  let BSCard = "border border-secondary";
 
   let xs = 5;
   let sm = 5;

@@ -6,7 +6,7 @@ import Profile from "../components/Profile";
 
 function Homepage() {
   return (
-    <div className="d-flex flex-column bg-light gap-5">
+    <div className="d-flex flex-column bg-dark gap-5">
       <Profile />
       <Gain />
       <Dollar />

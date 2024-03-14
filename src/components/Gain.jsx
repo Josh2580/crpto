@@ -4,7 +4,7 @@ import BoostImg from "../assets/aka/boost.png";
 import GasImg from "../assets/aka/gas.png";
 import MazeImg from "../assets/aka/maze.png";
 import SpinningImg from "../assets/aka/spinning.png";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Gain = () => {
   const navigate = useNavigate();
@@ -14,14 +14,14 @@ const Gain = () => {
 
     borderRadius: "16px",
     padding: "8px",
-    // background: "red",
+    background: "none",
   };
   let cardStyle = {
     // width: "163px",
 
     borderRadius: "16px",
     padding: "8px",
-    // background: "red",
+    background: "none",
   };
 
   let imgStyle = {
@@ -37,20 +37,23 @@ const Gain = () => {
     textAlign: "center",
     margin: "0px",
     padding: "0px",
+    // background: "yellow",
   };
 
-  let BSText = " fw-bold ";
+  let BSText = " fw-bold text-light";
 
   let BSCol = " p-0 h-100 ";
+
+  let BSCard = "border";
 
   let xs = 5;
   let sm = 5;
   let md = 5;
 
   return (
-    <div className="d-flex flex-wrap   justify-content-center gap-3">
+    <div className="d-flex flex-wrap justify-content-center gap-3">
       <Col xs={xs} sm={sm} md={md} className={BSCol}>
-        <Card style={textCardStyle}>
+        <Card style={textCardStyle} className={BSCard}>
           <Card.Img variant="top" src={SpinningImg} style={imgStyle} />
           <Card.Body>
             <Card.Title className={BSText} style={textStyle}>
@@ -60,7 +63,7 @@ const Gain = () => {
         </Card>
       </Col>
       <Col xs={xs} sm={sm} md={md} className={BSCol}>
-        <Card style={textCardStyle}>
+        <Card style={textCardStyle} className={BSCard}>
           <Card.Img variant="top" src={MazeImg} style={imgStyle} />
           <Card.Body>
             <Card.Title className={BSText} style={textStyle}>
@@ -70,12 +73,20 @@ const Gain = () => {
         </Card>
       </Col>
       <Col xs={xs} sm={sm} md={md} className={BSCol}>
-        <Card onClick={() => navigate("/gas")} style={cardStyle}>
+        <Card
+          onClick={() => navigate("/gas")}
+          className={BSCard}
+          style={cardStyle}
+        >
           <Card.Img variant="top" src={GasImg} style={imgStyle} />
         </Card>
       </Col>
       <Col xs={xs} sm={sm} md={md} className={BSCol}>
-        <Card onClick={() => navigate("/boost")} style={cardStyle}>
+        <Card
+          onClick={() => navigate("/boost")}
+          className={BSCard}
+          style={cardStyle}
+        >
           <Card.Img variant="top" src={BoostImg} style={imgStyle} />
         </Card>
       </Col>

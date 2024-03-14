@@ -12,8 +12,10 @@ import {
 const Profile = () => {
   return (
     <>
-      <div className=" d-flex align-items-center text-light justify-content-between px-1 fs-6 rounded-4">
-        <p className="m-0 p-1">Connect Wallet</p>
+      <div className=" d-flex align-items-center text-light justify-content-between px-4 fs-6 rounded-4">
+        <p className="m-0 px-2 py-0 border border-secondary  rounded-5">
+          Connect Wallet
+        </p>
         <p className="m-0 p-1">N</p>
       </div>
       <div className="d-flex text-light flex-column align-items-center rounded-4 mx-auto p-3 gap-3 border border-secondary bg-dar">

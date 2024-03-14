@@ -14,7 +14,7 @@ let xs = 12;
 let sm = 5;
 let md = 5;
 
-const Portfolio = () => {
+const Dollar = () => {
   return (
     <div className="d-flex flex-wrap gap-1 mb-5">
       <Col xs={xs} sm={sm} md={md} className={BSCol} style={ColStyle}>
@@ -33,4 +33,4 @@ const Portfolio = () => {
   );
 };
 
-export default Portfolio;
+export default Dollar;

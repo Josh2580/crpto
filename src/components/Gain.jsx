@@ -10,7 +10,7 @@ const Gain = () => {
   const navigate = useNavigate();
   let textCardStyle = {
     // width: "163px",
-    height: "200px",
+    height: "180px",
 
     borderRadius: "16px",
     padding: "8px",
@@ -33,7 +33,7 @@ const Gain = () => {
   };
 
   let textStyle = {
-    fontSize: "20px",
+    fontSize: "16px",
     textAlign: "center",
     margin: "0px",
     padding: "0px",

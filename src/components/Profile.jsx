@@ -6,7 +6,7 @@ import MazeImg from "../assets/aka/maze.png";
 import SpinningImg from "../assets/aka/spinning.png";
 import { Link, useNavigate } from "react-router-dom";
 
-const Service = () => {
+const Profile = () => {
   const navigate = useNavigate();
   let textCardStyle = {
     // width: "163px",
@@ -50,7 +50,7 @@ const Service = () => {
   return (
     <div className="d-flex flex-wrap   justify-content-center gap-3">
       <Col xs={xs} sm={sm} md={md} className={BSCol}>
-        <Card onClick={() => ClickHandler(data)} style={textCardStyle}>
+        <Card style={textCardStyle}>
           <Card.Img variant="top" src={SpinningImg} style={imgStyle} />
           <Card.Body>
             <Card.Title className={BSText} style={textStyle}>
@@ -60,7 +60,7 @@ const Service = () => {
         </Card>
       </Col>
       <Col xs={xs} sm={sm} md={md} className={BSCol}>
-        <Card onClick={() => ClickHandler(data)} style={textCardStyle}>
+        <Card style={textCardStyle}>
           <Card.Img variant="top" src={MazeImg} style={imgStyle} />
           <Card.Body>
             <Card.Title className={BSText} style={textStyle}>
@@ -75,7 +75,7 @@ const Service = () => {
         </Card>
       </Col>
       <Col xs={xs} sm={sm} md={md} className={BSCol}>
-        <Card onClick={() => ClickHandler(data)} style={cardStyle}>
+        <Card onClick={() => navigate("/boost")} style={cardStyle}>
           <Card.Img variant="top" src={BoostImg} style={imgStyle} />
         </Card>
       </Col>
@@ -83,4 +83,4 @@ const Service = () => {
   );
 };
 
-export default Service;
+export default Profile;

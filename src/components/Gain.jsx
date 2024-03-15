@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Card, Row, Col, Modal, Button } from "react-bootstrap";
-import BoostImg from "../assets/aka/boost.png";
-import GasImg from "../assets/aka/gas.png";
-import MazeImg from "../assets/aka/maze.png";
-import SpinningImg from "../assets/aka/spinning.png";
+import BoostImg from "../assets/boost.png";
+import GasImg from "../assets/gas.png";
+import MazeImg from "../assets/maze.png";
+import SpinningImg from "../assets/spinning.png";
 import { useNavigate } from "react-router-dom";
 
 const Gain = () => {

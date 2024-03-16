@@ -65,7 +65,7 @@ const Gain = () => {
   };
 
   return (
-    <div className="d-flex flex-wrap justify-content-center gap-3">
+    <div className="d-flex m-0 p-0 flex-wrap justify-content-center gap-3">
       <Col
         xs={xs}
         sm={sm}

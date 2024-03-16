@@ -14,7 +14,7 @@ import LogoImg from "../assets/CDMLogo.png";
 const Profile = () => {
   return (
     <div className="mx-4">
-      <div className=" d-flex  ">
+      <div className=" d-flex mb-3  ">
         <img
           src={LogoImg}
           style={{ height: "70px", margin: "0px" }}

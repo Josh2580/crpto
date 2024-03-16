@@ -3,10 +3,13 @@ import { Card, Row, Col, Modal, Button } from "react-bootstrap";
 import BoostImg from "../assets/boost.png";
 import GasImg from "../assets/gas.png";
 import MazeImg from "../assets/maze.png";
-import SpinningImg from "../assets/spinning.png";
+import SpinningImg from "../assets/spin.png";
 import { useNavigate } from "react-router-dom";
+import CustomImageLoader from "custom-image-loader-react";
 
 const Gain = () => {
+  const [isSpinning, setIsSpinning] = useState(false);
+
   const navigate = useNavigate();
   let textCardStyle = {
     // width: "163px",
@@ -50,11 +53,41 @@ const Gain = () => {
   let sm = 5;
   let md = 5;
 
+  const SpinHandler = () => {
+    // setIsSpinning(!isSpinning);
+    setTimeout(() => {
+      setIsSpinning(true);
+    }, 100);
+
+    setTimeout(() => {
+      setIsSpinning(false);
+    }, 3000);
+  };
+
   return (
     <div className="d-flex flex-wrap justify-content-center gap-3">
-      <Col xs={xs} sm={sm} md={md} className={BSCol}>
+      <Col
+        xs={xs}
+        sm={sm}
+        md={md}
+        className={BSCol}
+        onClick={() => SpinHandler()}
+      >
         <Card style={textCardStyle} className={BSCard}>
-          <Card.Img variant="top" src={SpinningImg} style={imgStyle} />
+          {/* <Card.Img variant="top" src={SpinningImg} style={imgStyle} /> */}
+          <div
+            className="d-flex align-items-center justify-content-center "
+            style={{ width: "100%", height: "100%" }}
+          >
+            <CustomImageLoader
+              image={SpinningImg}
+              // isLoaded={true}
+              // circle={false}
+              speed={2}
+              animationType={isSpinning && "spin"}
+            />
+          </div>
+
           <Card.Body>
             <Card.Title className={BSText} style={textStyle}>
               Spinning Maze

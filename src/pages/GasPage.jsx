@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Col } from "react-bootstrap";
-import SpinningImg from "../assets/spinning.png";
+import SpinningImg from "../assets/maze1.png";
 
 const GasPage = () => {
   let ColStyle = {
@@ -59,13 +59,6 @@ const GasPage = () => {
         </Col>
         <Col xs={xs} sm={sm} md={md} className={BSCol} style={ColStyle}>
           <p style={TextStyle}>Increase your mining speed 2x, 4x, 6x</p>
-
-          <p>$1.00</p>
-        </Col>
-        <Col xs={xs} sm={sm} md={md} className={BSCol} style={ColStyle}>
-          <p style={TextStyle}>
-            Put some $ADA in your wallet to pay for the gas
-          </p>
 
           <p>$1.00</p>
         </Col>

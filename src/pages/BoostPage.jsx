@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Col } from "react-bootstrap";
-import SpinningImg from "../assets/spinning.png";
+import SpinningImg from "../assets/maze2.png";
 
 const BoostPage = () => {
   let ColStyle = {};
@@ -15,6 +15,7 @@ const BoostPage = () => {
 
   let BSText = "border p-2 rounded-3";
 
+  <Button>0x0we....ed4vb</Button>;
   let xs = 12;
   let sm = 12;
   let md = 12;
@@ -33,7 +34,7 @@ const BoostPage = () => {
     >
       <div
         style={{
-          background: "#2f1e39",
+          background: "#8d8ab6",
           width: "",
           // borderBottomLeftRadius: "120px",
           // borderBottomRightRadius: "120px",

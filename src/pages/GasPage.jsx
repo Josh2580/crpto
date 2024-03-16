@@ -49,7 +49,6 @@ const GasPage = () => {
           Every CDM claim is a Cardano blockchain transaction. We will pay for
           your gas expenses as long as you have gas-free transactions.{" "}
         </p>
-        <Button>0x0we....ed4vb</Button>
       </div>
 
       <div className="d-flex flex-wrap gap-3 mt-4 mx-3  text-light border-secondary">

@@ -4,7 +4,7 @@ import SpinningImg from "../assets/spinning.png";
 
 const BoostPage = () => {
   let ColStyle = {};
-  let BSCol = " d-flex flex-column gap-2 px-2";
+  let BSCol = " d-flex flex-column gap-2 px-2 mt-4";
 
   let ImgStyle = {
     height: "150px",
@@ -45,7 +45,6 @@ const BoostPage = () => {
           <p className="p-0 m-0">Your Balance</p>
           <h3>$CDM 0.00</h3>
         </div>
-        <Button>0x0we....ed4vb</Button>
       </div>
 
       <Col xs={xs} sm={sm} md={md} className={BSCol} style={ColStyle}>

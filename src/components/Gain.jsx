@@ -7,6 +7,7 @@ import SpinningImg from "../assets/spin.png";
 import { useNavigate } from "react-router-dom";
 import CustomImageLoader from "custom-image-loader-react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
+import { useGetMineQuery, useGetMineByIdQuery } from "../api/mineApi";
 
 const Gain = () => {
   const [isSpinning, setIsSpinning] = useState(false);
@@ -15,8 +16,14 @@ const Gain = () => {
   const [remainingTime, setRemainingTime] = useState();
   const [timer, setTimer] = useState(false);
 
-  console.log(trailFull);
-  console.log(remainingTime);
+  // const { data, error, isLoading } = useGetMineQuery();
+  const { data, error, isLoading } = useGetMineByIdQuery(1);
+  const [mineData, setMineData] = useState({});
+
+  console.log(mineData);
+
+  // console.log(trailFull);
+  // console.log(remainingTime);
 
   const navigate = useNavigate();
   let textCardStyle = {
@@ -93,6 +100,10 @@ const Gain = () => {
       setTimer(false);
     }
   }, [remainingTime]);
+
+  useEffect(() => {
+    setMineData(data);
+  }, [data]);
 
   return (
     <div className="d-flex m-0 p-0 flex-wrap justify-content-center gap-3">

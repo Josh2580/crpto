@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 
 import {
@@ -10,8 +10,18 @@ import {
 } from "react-icons/fa";
 
 import LogoImg from "../assets/CDMLogo.png";
+import { useGetMineByIdQuery } from "../api/mineApi";
 
 const Profile = () => {
+  const { data, error, isLoading, isSuccess } = useGetMineByIdQuery(1);
+  const [mineData, setMineData] = useState({});
+
+  isSuccess && console.log(data.quantity_mined);
+
+  useEffect(() => {
+    setMineData(data);
+  }, [data]);
+
   return (
     <div className="mx-4">
       <div className=" d-flex mb-3  ">
@@ -24,7 +34,7 @@ const Profile = () => {
       <div className="d-flex m-0 text-light flex-column  align-items-center rounded-4 w-100 p-5 gap-3 border border-secondary ">
         <div className="d-flex flex-column align-items-center">
           <p className="p-0 m-0 fs-6">Earned CDM</p>
-          <h3>$CDM 0.00</h3>
+          <h3>$CDM {mineData && mineData.quantity_mined}</h3>
         </div>
         <div className="d-flex gap-3  rounded-4 px-3 ">
           <span>Profits</span>

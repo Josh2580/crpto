@@ -10,11 +10,22 @@ export const mineApi = createApi({
       query: () => `coin/`,
     }),
     getMineById: builder.query({
-      query: (id) => `coin/${id}`,
+      query: (id) => `coin/${id}/`,
+      providesTags: (result, error, id) => [{ type: "Mining", id }],
+    }),
+    spinById: builder.mutation({
+      // note: an optional `queryFn` may be used in place of `query`
+      query: ({ id, formData }) => ({
+        url: `coin/${id}/`,
+        method: "PATCH",
+        body: formData,
+      }),
+      invalidatesTags: (result, error, { id }) => [{ type: "Mining", id }],
     }),
   }),
 });
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetMineQuery, useGetMineByIdQuery } = mineApi;
+export const { useGetMineQuery, useGetMineByIdQuery, useSpinByIdMutation } =
+  mineApi;

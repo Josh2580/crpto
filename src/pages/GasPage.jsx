@@ -66,22 +66,23 @@ const GasPage = () => {
         <div>
           <img src={SpinningImg} alt="Spinning Image" style={ImgStyle} />
           <p>
-            Every CDM claim is a Cardano blockchain transaction. We will pay for
-            your gas expenses as long as you have gas-free transactions.{" "}
+            After activation, participants can now mine by spinning.
+            <br />
+            Activate Below !!!
           </p>
         </div>
       </div>
 
       <div className="d-flex flex-wrap gap-3 mt-4 mx-3  text-dark fw-bold border-secondary">
         <Col xs={xs} sm={sm} md={md} className={BSCol} style={ColStyle}>
-          <p style={TextStyle}>Increase your mining time to claim less often</p>
+          <p className="p-0 py-1 m-0 fw-bold">Activate Your Mining Power</p>
 
-          <p>$1.00</p>
+          <p className="p-0 py-1 m-0 fw-bold">5 $ADA</p>
         </Col>
         <Col xs={xs} sm={sm} md={md} className={BSCol} style={ColStyle}>
-          <p style={TextStyle}>Increase your mining speed 2x, 4x, 6x</p>
+          <p className="p-0 py-1 m-0 fw-bold">One Week Auto Spinner Bot</p>
 
-          <p>$1.00</p>
+          <p className="p-0 py-1 m-0 fw-bold">10 $ADA</p>
         </Col>
       </div>
     </div>

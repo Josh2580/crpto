@@ -17,7 +17,7 @@ const BoostPage = () => {
     margin: "20px 0px",
   };
 
-  let BSText = "border p-2 rounded-3";
+  let BSText = "border fs-6 p-2 rounded-3";
 
   <Button>0x0we....ed4vb</Button>;
   let xs = 12;
@@ -61,29 +61,24 @@ const BoostPage = () => {
       >
         <img src={SpinningImg} alt="Spinning Image" style={ImgStyle} />
         <div>
-          <p className="p-0 m-0">Your Balance</p>
-          <h3>$CDM 0.00</h3>
+          <p className="p-0 fs-3 m-0 text-dark fw-bold">Earn More</p>
         </div>
       </div>
 
       <Col xs={xs} sm={sm} md={md} className={BSCol} style={ColStyle}>
         <p className={BSText} style={TextStyle}>
-          Follow CDM on Twitter
+          Follow $MAZE on Twitter
         </p>
         <p className={BSText} style={TextStyle}>
-          Follow CDM on Telegram
+          Follow $MAZE on Telegram
         </p>
+
         <p className={BSText} style={TextStyle}>
-          Follow CDM on Telegram
+          Follow $MAZE on Telegram Community
         </p>
+
         <p className={BSText} style={TextStyle}>
-          Follow CDM on Telegram Community
-        </p>
-        <p className={BSText} style={TextStyle}>
-          Join CDM on Discord
-        </p>
-        <p className={BSText} style={TextStyle}>
-          Follow CDM on Youtube
+          Follow $MAZE on Youtube
         </p>
         <p className={BSText} style={TextStyle}>
           Invite Your Friends

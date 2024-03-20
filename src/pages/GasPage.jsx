@@ -1,8 +1,11 @@
 import React from "react";
 import { Button, Col } from "react-bootstrap";
 import SpinningImg from "../assets/maze1.png";
+import { FaArrowCircleLeft } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const GasPage = () => {
+  const navigate = useNavigate();
   let ColStyle = {
     // background: "blueviolet",
     boxShadow: " 0 0 4 6 ",
@@ -37,21 +40,39 @@ const GasPage = () => {
     >
       <div
         style={{
-          background: "#2f1e39",
+          background: "#8d8ab6",
+
           width: "",
           // borderBottomLeftRadius: "120px",
           // borderBottomRightRadius: "120px",
         }}
-        className="pb-4 text-light "
+        className="pb-4 text-dark fw-bold"
       >
-        <img src={SpinningImg} alt="Spinning Image" style={ImgStyle} />
-        <p>
-          Every CDM claim is a Cardano blockchain transaction. We will pay for
-          your gas expenses as long as you have gas-free transactions.{" "}
-        </p>
+        <div
+          style={{
+            display: "block",
+            // background: "red",
+            width: "100%",
+            fontSize: "30px",
+            textAlign: "left",
+            margin: "0px",
+            paddingLeft: "14px",
+            color: "#171717",
+          }}
+        >
+          <FaArrowCircleLeft onClick={() => navigate("/")} />
+        </div>
+
+        <div>
+          <img src={SpinningImg} alt="Spinning Image" style={ImgStyle} />
+          <p>
+            Every CDM claim is a Cardano blockchain transaction. We will pay for
+            your gas expenses as long as you have gas-free transactions.{" "}
+          </p>
+        </div>
       </div>
 
-      <div className="d-flex flex-wrap gap-3 mt-4 mx-3  text-light border-secondary">
+      <div className="d-flex flex-wrap gap-3 mt-4 mx-3  text-dark fw-bold border-secondary">
         <Col xs={xs} sm={sm} md={md} className={BSCol} style={ColStyle}>
           <p style={TextStyle}>Increase your mining time to claim less often</p>
 

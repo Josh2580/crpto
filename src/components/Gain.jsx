@@ -3,8 +3,8 @@ import { Card, Row, Col, Modal, Button } from "react-bootstrap";
 
 import BoostImg from "../assets/earn1.png";
 import GasImg from "../assets/gas1.png";
-// import MazeImg from "../assets/maze.png";
-import MazeImg from "../assets/TankFull.gif";
+import MazeImg from "../assets/maze.png";
+import FullImg from "../assets/full.png";
 import SpinningImg from "../assets/spin.png";
 import CustomImageLoader from "custom-image-loader-react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
@@ -35,6 +35,7 @@ const Gain = () => {
   const [lastClickedTime, setLastClickedTime] = useState();
   const [firstClicked, setFirstClicked] = useState();
   const [isSpinning, setIsSpinning] = useState(false);
+  const [isFull, setIsFull] = useState(false);
 
   let remainTime;
   const maxTime = 60;
@@ -86,8 +87,7 @@ const Gain = () => {
   //
   useEffect(() => {
     remainTime = PageMyTime;
-    // console.log("remainTime: ", remainTime);
-  }, [PageMyTime, PageSecondsDiff, PageNow]);
+  }, [PageMyTime, PageSecondsDiff, PageNow, PageIsTime]);
 
   const SpinHandler = async () => {
     const now = new Date();
@@ -108,10 +108,13 @@ const Gain = () => {
       }
       //   //     // setLastClickedTime(now);
       //   //     try {
+      setIsFull(false);
+
       const result = await spinNow({ formData, id: 1 }).unwrap();
       if (result) {
         setFirstClicked(result.first_click);
         //   //         setLastClickedTime(result.time_clicked);
+        setIsFull(false);
         console.log("updated");
         //   //         // setTimer(false);
       }
@@ -125,6 +128,7 @@ const Gain = () => {
 
     setTimeout(() => {
       setIsSpinning(true);
+      // PageIsTime && PageIsTime == 60 && setIsFull(true);
     }, 100);
 
     setTimeout(() => {
@@ -154,7 +158,7 @@ const Gain = () => {
     isSuccess && setFirstClicked(data.first_click);
     isSuccess && setLastClickedTime(data.time_clicked);
     isSuccess && setMineData(data.quantity_mined);
-  }, [data, isSuccess]);
+  }, [data, isSuccess, PageIsTime]);
 
   //   // useEffect(() => {
   //   //   // let myTime = maxTime - isTime;
@@ -230,8 +234,17 @@ const Gain = () => {
             >
               
             </CountdownCircleTimer> */}
+            {isFull && (
+              <CustomImageLoader
+                image={FullImg}
+                // isLoaded={true}
+                // circle={false}
+                // speed={2}
+                // animationType={isSpinning && "spin"}
+              />
+            )}
 
-            {PageMyTime && (
+            {PageMyTime && !isFull && (
               <CountdownCircleTimer
                 size={100} // Mandatory
                 isPlaying // Mandatory
@@ -239,6 +252,10 @@ const Gain = () => {
                 initialRemainingTime={PageMyTime}
                 colors={["#004777", "#d4dc47", "#220909", "#A30000"]} // Mandatory
                 colorsTime={[7, 5, 2, 0]} // Mandatory
+                onComplete={() => {
+                  setIsFull(true);
+                  // repeat animation in 1.5 seconds
+                }}
               >
                 {({ remainingTime }) => (
                   <div style={{ color: "white", fontSize: "20px" }}>

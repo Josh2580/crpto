@@ -1,8 +1,12 @@
 import React from "react";
 import { Button, Col } from "react-bootstrap";
 import SpinningImg from "../assets/maze2.png";
+import { FaArrowCircleLeft } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const BoostPage = () => {
+  const navigate = useNavigate();
+
   let ColStyle = {};
   let BSCol = " d-flex flex-column gap-2 px-2 mt-4";
 
@@ -32,6 +36,20 @@ const BoostPage = () => {
       style={{ height: "100vh", width: "100vw" }}
       className="px- pb-5 text-center bg-secondary "
     >
+      <div
+        style={{
+          display: "block",
+          background: "#8d8ab6",
+          width: "100%",
+          fontSize: "30px",
+          textAlign: "left",
+          margin: "0px",
+          paddingLeft: "14px",
+          color: "#171717",
+        }}
+      >
+        <FaArrowCircleLeft onClick={() => navigate("/")} />
+      </div>
       <div
         style={{
           background: "#8d8ab6",

@@ -16,7 +16,7 @@ const Profile = () => {
   const { data, error, isLoading, isSuccess } = useGetMineByIdQuery(1);
   const [mineData, setMineData] = useState({});
 
-  isSuccess && console.log(data.quantity_mined);
+  // isSuccess && console.log(data.quantity_mined);
 
   useEffect(() => {
     setMineData(data);

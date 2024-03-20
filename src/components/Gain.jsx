@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { Card, Row, Col, Modal, Button } from "react-bootstrap";
-import BoostImg from "../assets/boost.png";
-import GasImg from "../assets/gas.png";
-import MazeImg from "../assets/maze.png";
+
+import BoostImg from "../assets/earn1.png";
+import GasImg from "../assets/gas1.png";
+// import MazeImg from "../assets/maze.png";
+import MazeImg from "../assets/TankFull.gif";
 import SpinningImg from "../assets/spin.png";
-import { useNavigate } from "react-router-dom";
 import CustomImageLoader from "custom-image-loader-react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { useGetMineByIdQuery, useSpinByIdMutation } from "../api/mineApi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 const Gain = () => {
-  const [isSpinning, setIsSpinning] = useState(false);
-  const [trailColor, setTrailColor] = useState("");
-  const [trailFull, setTrailFull] = useState(false);
-  const [myRemainingTime, setMyRemainingTime] = useState();
-  const [timer, setTimer] = useState(false);
+  const navigate = useNavigate();
+  const notify = () => toast("Not Yet Time");
+  //   const [trailColor, setTrailColor] = useState("");
+  //   const [trailFull, setTrailFull] = useState(false);
+  //   const [myRemainingTime, setMyRemainingTime] = useState();
+  //   const [timer, setTimer] = useState(false);
 
   const { data, error, isLoading, isSuccess } = useGetMineByIdQuery(1);
   const [
@@ -29,10 +34,13 @@ const Gain = () => {
   const [mineData, setMineData] = useState({});
   const [lastClickedTime, setLastClickedTime] = useState();
   const [firstClicked, setFirstClicked] = useState();
+  const [isSpinning, setIsSpinning] = useState(false);
 
-  // console.log(firstClicked);
+  let remainTime;
+  const maxTime = 60;
 
-  const navigate = useNavigate();
+  //   // console.log(firstClicked);
+
   let textCardStyle = {
     height: "180px",
     borderRadius: "16px",
@@ -46,9 +54,10 @@ const Gain = () => {
   };
 
   let imgStyle = {
-    width: "100%",
-    minHeight: "114px",
-    maxHeight: "114px",
+    width: "80%",
+    margin: "auto",
+    minHeight: "134px",
+    maxHeight: "134px",
     borderRadius: "16px",
   };
 
@@ -69,18 +78,26 @@ const Gain = () => {
   let sm = 5;
   let md = 5;
 
-  const now = new Date();
-
-  const hoursDiff = (now - new Date(lastClickedTime)) / (1000 * 60);
-  let isTime = hoursDiff * 60;
-  // console.log(isTime);
+  //
+  const PageNow = new Date();
+  const PageSecondsDiff = (PageNow - new Date(lastClickedTime)) / (1000 * 1);
+  let PageIsTime = Math.floor(Math.min(PageSecondsDiff, 60));
+  let PageMyTime = maxTime - PageIsTime;
+  //
+  useEffect(() => {
+    remainTime = PageMyTime;
+    // console.log("remainTime: ", remainTime);
+  }, [PageMyTime, PageSecondsDiff, PageNow]);
 
   const SpinHandler = async () => {
-    // const now = new Date();
+    const now = new Date();
     // const hoursDiff = (now - lastClickedTime) / (1000 * 60 * 60);
     // const hoursDiff = (now - new Date(lastClickedTime)) / (1000 * 60);
+    const secondsDiff = (now - new Date(lastClickedTime)) / (1000 * 1);
+    let isTime = Math.floor(Math.min(secondsDiff, 60));
+    let myTime = maxTime - isTime;
 
-    if (firstClicked || hoursDiff >= 1) {
+    if (firstClicked || myTime == 0) {
       const formData = new FormData();
       let timeCLick = now.toISOString();
       formData.append("time_clicked", timeCLick);
@@ -88,65 +105,77 @@ const Gain = () => {
 
       if (firstClicked) {
         formData.append("first_click", false);
-        // console.log(firstClicked);
       }
-      // setLastClickedTime(now);
-      try {
-        const result = await spinNow({ formData, id: 1 }).unwrap();
-        if (result) {
-          setFirstClicked(result.first_click);
-          setLastClickedTime(result.time_clicked);
-          console.log(result);
-          // setTimer(false);
-        }
-      } catch (err) {
-        console.error("There's an error: ", err);
+      //   //     // setLastClickedTime(now);
+      //   //     try {
+      const result = await spinNow({ formData, id: 1 }).unwrap();
+      if (result) {
+        setFirstClicked(result.first_click);
+        //   //         setLastClickedTime(result.time_clicked);
+        console.log("updated");
+        //   //         // setTimer(false);
       }
+      //   //     } catch (err) {
+      //   //       console.error("There's an error: ", err);
+      //   //     }
     } else {
       console.log("Not time yet");
+      notify();
     }
 
     setTimeout(() => {
-      if (myRemainingTime == "0") {
-        setTrailFull(true);
-        setIsSpinning(true);
-      }
+      setIsSpinning(true);
     }, 100);
 
     setTimeout(() => {
-      setTrailFull(false);
-      setTimer(false);
+      // setTrailFull(false);
+      // setTimer(false);
       setIsSpinning(false);
-      // window.location.reload();
     }, 3000);
   };
 
-  // const children = ({ remainingTime }) => {
-  //   const hours = Math.floor(remainingTime / 3600);
-  //   const minutes = Math.floor((remainingTime % 3600) / 60);
-  //   const seconds = remainingTime % 60;
+  //   // const children = ({ remainingTime }) => {
+  //   //   const hours = Math.floor(remainingTime / 3600);
+  //   //   const minutes = Math.floor((remainingTime % 3600) / 60);
+  //   //   const seconds = remainingTime % 60;
 
-  //   return `${hours}:${minutes}:${seconds}`;
-  // };
+  //   //   return `${hours}:${minutes}:${seconds}`;
+  //   // };
+
+  //   // useEffect(() => {
+  //   //   if (myRemainingTime == "0") {
+  //   //     setTimer(true);
+  //   //   } else {
+  //   //     setTimer(false);
+  //   //   }
+  //   // }, [myRemainingTime]);
 
   useEffect(() => {
-    if (myRemainingTime == "0") {
-      setTimer(true);
-    } else {
-      setTimer(false);
-    }
-  }, [myRemainingTime]);
-
-  useEffect(() => {
-    // setMineData(data);
     isSuccess && setFirstClicked(data.first_click);
     isSuccess && setLastClickedTime(data.time_clicked);
     isSuccess && setMineData(data.quantity_mined);
-    // console.log(data);
   }, [data, isSuccess]);
+
+  //   // useEffect(() => {
+  //   //   // let myTime = maxTime - isTime;
+  //   //   setRemainTime(myTime);
+  //   //   console.log(myTime, maxTime);
+  //   // }, [data, isSuccess, myTime]);
 
   return (
     <div className="d-flex m-0 p-0 flex-wrap justify-content-center gap-3">
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        theme="light"
+      />
       <Col
         xs={xs}
         sm={sm}
@@ -182,30 +211,37 @@ const Gain = () => {
             className="d-flex align-items-center justify-content-center  "
             style={{ width: "100%", height: "100%" }}
           >
-            {timer ? (
-              <p>Tank Full</p>
-            ) : (
-              <CountdownCircleTimer
-                size={100}
-                isPlaying={!trailFull}
-                duration={60}
-                // initialRemainingTime={15}
-                trailColor={trailFull ? "#01f763" : "#d9d9d9"}
-                colors={["#004777", "#d4dc47", "#A30000", "#A30000"]}
-                colorsTime={[7, 5, 2, 0]}
-                onComplete={() => {
-                  if (!trailFull) {
-                    setTrailFull(true);
-                    // window.location.reload();
+            {/* <CountdownCircleTimer
+              size={100}
+              // isPlaying={!trailFull}
+              isPlaying
+              duration={60}
+              // initialRemainingTime={remainTime == NaN ? "" : remainTime}
+              // trailColor={trailFull ? "#01f763" : "#d9d9d9"}
 
-                    return { shouldRepeat: true, delay: 1.5 };
-                  }
-                  // repeat animation in 1.5 seconds
-                }}
+              // onComplete={() => {
+              //   if (!trailFull) {
+              //     // setTrailFull(true);
+              //     // window.location.reload();
+              //     // return { shouldRepeat: true, delay: 1.5 };
+              //   }
+              //   // repeat animation in 1.5 seconds
+              // }}
+            >
+              
+            </CountdownCircleTimer> */}
+
+            {PageMyTime && (
+              <CountdownCircleTimer
+                size={100} // Mandatory
+                isPlaying // Mandatory
+                duration={60} // Mandatory
+                initialRemainingTime={PageMyTime}
+                colors={["#004777", "#d4dc47", "#220909", "#A30000"]} // Mandatory
+                colorsTime={[7, 5, 2, 0]} // Mandatory
               >
                 {({ remainingTime }) => (
                   <div style={{ color: "white", fontSize: "20px" }}>
-                    {setMyRemainingTime(remainingTime)}
                     {remainingTime}
                   </div>
                 )}

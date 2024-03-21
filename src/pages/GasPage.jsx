@@ -1,10 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Col } from "react-bootstrap";
 import SpinningImg from "../assets/maze1.png";
 import { FaArrowCircleLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import {
+  useCreateOrderMutation,
+  useCreateInvoiceMutation,
+} from "../api/paymentApi";
 
 const GasPage = () => {
+  const [createOrder] = useCreateOrderMutation();
+  const [createInvoice] = useCreateInvoiceMutation();
+
+  const PayHandler = async (amount) => {
+    const userId = 2;
+    const formData = new FormData();
+    formData.append("fiat_amount", amount);
+    const orderResult = await createOrder({ formData, user_id: userId });
+    if (orderResult) {
+      const orderId = orderResult.data.id;
+
+      const invoiceResult = await createInvoice({
+        user_id: userId,
+        order_id: orderId,
+      });
+      if (invoiceResult) {
+        console.log(invoiceResult);
+      }
+    }
+  };
+
   const navigate = useNavigate();
   let ColStyle = {
     // background: "blueviolet",
@@ -74,15 +99,29 @@ const GasPage = () => {
       </div>
 
       <div className="d-flex flex-wrap gap-3 mt-4 mx-3  text-dark fw-bold border-secondary">
-        <Col xs={xs} sm={sm} md={md} className={BSCol} style={ColStyle}>
+        <Col
+          xs={xs}
+          sm={sm}
+          md={md}
+          className={BSCol}
+          style={ColStyle}
+          onClick={() => PayHandler(3)}
+        >
           <p className="p-0 py-1 m-0 fw-bold">Activate Your Mining Power</p>
 
-          <p className="p-0 py-1 m-0 fw-bold">5 $ADA</p>
+          <p className="p-0 py-1 m-0 fw-bold">$3</p>
         </Col>
-        <Col xs={xs} sm={sm} md={md} className={BSCol} style={ColStyle}>
+        <Col
+          xs={xs}
+          sm={sm}
+          md={md}
+          className={BSCol}
+          style={ColStyle}
+          onClick={() => PayHandler(7)}
+        >
           <p className="p-0 py-1 m-0 fw-bold">One Week Auto Spinner Bot</p>
 
-          <p className="p-0 py-1 m-0 fw-bold">10 $ADA</p>
+          <p className="p-0 py-1 m-0 fw-bold">$7</p>
         </Col>
       </div>
     </div>

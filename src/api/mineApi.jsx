@@ -1,10 +1,8 @@
 // Need to use the React-specific entry point to import createApi
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { rootApi } from "./rootApi";
 
 // Define a service using a base URL and expected endpoints
-export const mineApi = createApi({
-  reducerPath: "mineApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://127.0.0.1:8000/" }),
+export const mineApi = rootApi.injectEndpoints({
   endpoints: (builder) => ({
     getMine: builder.query({
       query: () => `coin/`,

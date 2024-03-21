@@ -26,6 +26,8 @@ const GasPage = () => {
       });
       if (invoiceResult) {
         console.log(invoiceResult);
+        window.location.href =
+          invoiceResult.invoice_url || invoiceResult.data.invoice_url;
       }
     }
   };

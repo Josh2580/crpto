@@ -22,6 +22,7 @@ const Gain = () => {
   //   const [timer, setTimer] = useState(false);
 
   const { data, error, isLoading, isSuccess } = useGetMineByIdQuery(1);
+
   const [
     spinNow,
     {

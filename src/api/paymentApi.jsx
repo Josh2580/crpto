@@ -2,6 +2,10 @@ import { rootApi } from "./rootApi";
 
 const paymentApi = rootApi.injectEndpoints({
   endpoints: (build) => ({
+    telegramWebhook: build.query({
+      query: () => `telegram/webhook/`,
+      providesTags: ["TelegramUser"],
+    }),
     getTelegramUser: build.query({
       query: (id) => `telegram/all/${user_id}/`,
       providesTags: ["TelegramUser"],
@@ -39,4 +43,5 @@ export const {
   useCreateOrderMutation,
   useCreateTelegramUserMutation,
   useGetTelegramUserQuery,
+  useTelegramWebhookQuery,
 } = paymentApi;

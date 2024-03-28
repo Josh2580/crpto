@@ -14,7 +14,7 @@ import { useGetMineByIdQuery } from "../api/mineApi";
 
 const Profile = () => {
   const { data, error, isLoading, isSuccess } = useGetMineByIdQuery(1);
-  isSuccess && console.log(data);
+  // isSuccess && console.log(data);
   const [mineData, setMineData] = useState({});
 
   // isSuccess && console.log(data.quantity_mined);

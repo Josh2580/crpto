@@ -5,10 +5,6 @@ import { Container } from "react-bootstrap";
 // const tele = window.Telegram.WebApp;
 
 const Root = () => {
-  // useEffect(() => {
-  //   tele.ready();
-  // }, []);
-
   let style = {
     maxWidth: "450px",
   };

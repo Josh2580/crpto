@@ -35,7 +35,7 @@ const Profile = () => {
       <div className="d-flex m-0 text-light flex-column  align-items-center rounded-4 w-100 p-5 gap-3 border border-secondary ">
         <div className="d-flex flex-column align-items-center">
           <p className="p-0 m-0 fs-6">Earned CDM</p>
-          <h3>$CDM {mineData && mineData.quantity_mined}</h3>
+          <h3>$CDM. {mineData && mineData.quantity_mined}</h3>
         </div>
         <div className="d-flex gap-3  rounded-4 px-3 ">
           <span>Profits</span>
